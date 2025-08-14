@@ -1,0 +1,94 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.2rem;
+  color: #08e013;
+  background-color: #000;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #08e013;
+}
+
+.question {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #08e013;
+  border-radius: 8px;
+}
+nav {
+  background: #111;
+  padding: 10px 0;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  margin: 0 15px;
+}
+nav ul li a {
+  color: #00FF00;
+  text-decoration: none;
+  font-weight: bold;
+}
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+label {
+  display: block;
+  margin: 5px 0;
+}
+
+.option.correct {
+  color: #08e013;
+  font-weight: bold;
+}
+
+.option.wrong {
+  color: red;
+  font-weight: bold;
+}
+
+.feedback {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+button {
+  background: #000;
+  color: white;
+  border: 2px solid #08e013;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background: #08e013;
+  color: #000;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  display: none;
+}
+
+.container {
+  width: 300;
+  height: 150;
+  border: 2px solid #00ff00;
+  padding: 20px;
+  margin: 20px;
+  background-color: #000;
+  border-radius: 8px;
+  box-shadow: 3px 3px 5px #00ff00;
+}

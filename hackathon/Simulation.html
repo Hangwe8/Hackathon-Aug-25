@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CyberSim — Cybersecurity Simulation Lab</title>
+  <link rel="stylesheet" href="stylesSM.css" />
+  <meta name="description" content="Interactive cybersecurity learning simulations: phishing, password cracking simulation, and safe SQL injection demo." />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>CyberSim</h1>
+      </div>
+      <nav class="top-nav" aria-label="Main navigation">
+        <button class="nav-btn" href="cyber (1).html">Home</button>
+        <button class="nav-btn" id="overviewBtn">Overview</button>
+        <button class="nav-btn" id="simulationsBtn">Simulations</button>
+        <button class="nav-btn" id="quizBtn">Quiz</button>
+      </nav>
+      <div class="profile">
+        <div id="pointsBadge" class="points" aria-live="polite">Points: 0</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-grid" id="main">
+    <section class="panel" id="overview">
+      <h2>Welcome to the Simulation Lab</h2>
+      <p class="muted">Practice identifying threats in safe, simulated environments. Complete simulations to earn points and unlock learning suggestions.</p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Phishing Email Identification</h3>
+          <p>Find indicators of phishing in a simulated message. This exercise helps you spot suspicious sender names, links, and urgent language.</p>
+          <button class="start-btn" data-target="phishing">Start</button>
+        </article>
+
+        <article class="card">
+          <h3>Password Strength Race</h3>
+          <p>Create a strong password and watch a simulated cracking engine estimate time-to-crack. Learn how to make passwords that last.</p>
+          <button class="start-btn" data-target="password">Start</button>
+        </article>
+
+        <article class="card">
+          <h3>SQL Injection (Safe Simulator)</h3>
+          <p>See how unsanitized inputs can change application behavior in a controlled simulation and learn secure alternatives.</p>
+          <button class="start-btn" data-target="sql">Start</button>
+        </article>
+      </div>
+
+      <div class="recommendation" aria-live="polite" id="recommendation">
+        <h4>Recommended next lesson</h4>
+        <p id="recText">Complete a simulation to see suggestions.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="simulations" hidden>
+      <div class="sim-header">
+        <h2>Simulations</h2>
+        <div class="sim-nav">
+          <button class="tab active" data-sim="phishing">Phishing</button>
+          <button class="tab" data-sim="password">Password Race</button>
+          <button class="tab" data-sim="sql">SQL Injection (Sim)</button>
+        </div>
+      </div>
+
+      <div class="sim-body">
+        <!-- PHISHING SIM -->
+        <article class="sim" id="phishingSim" role="region" aria-labelledby="phishingTitle">
+          <h3 id="phishingTitle">Phishing Email — Identify Suspicious Elements</h3>
+          <div class="email-card" tabindex="0" aria-label="Simulated email">
+            <div class="email-from"><strong>From:</strong> <span id="fromText">support@micros0ft-security.com</span></div>
+            <div class="email-subject"><strong>Subject:</strong> <span id="subjectText">URGENT: Verify your account now</span></div>
+            <div class="email-body">
+              <p>Hi <em>John</em>,</p>
+              <p>We detected suspicious activity. <strong>Click the link below to verify your account immediately</strong> or it will be suspended within 24 hours.</p>
+              <p><a href="#" id="suspiciousLink">https://micros0ft.verify-alerts.example.com/verify</a></p>
+              <p>Best,<br/>Account Security Team</p>
+            </div>
+          </div>
+
+          <div class="email-controls">
+            <p>Select up to 3 items you think are suspicious and click <strong>Check</strong>.</p>
+            <div class="options">
+              <label><input type="checkbox" value="sender" /> Sender address</label>
+              <label><input type="checkbox" value="link" /> Link destination</label>
+              <label><input type="checkbox" value="urgency" /> Urgent language / threats</label>
+              <label><input type="checkbox" value="personal" /> Personalized greeting</label>
+              <label><input type="checkbox" value="attachment" /> Attachment (not present)</label>
+            </div>
+            <div class="sim-actions">
+              <button id="checkPhishing" class="action">Check</button>
+              <button id="explainPhishing" class="secondary">Explain</button>
+            </div>
+            <div id="phishingResult" class="result" aria-live="polite"></div>
+          </div>
+        </article>
+
+        <!-- PASSWORD SIM -->
+        <article class="sim" id="passwordSim" role="region" aria-labelledby="passwordTitle" hidden>
+          <h3 id="passwordTitle">Password Strength Race</h3>
+          <p>Type a password and run a simulated attacker to estimate time-to-crack. This is a visualization — not a real attack.</p>
+
+          <div class="password-panel">
+            <label for="pwdInput">Password:</label>
+            <input id="pwdInput" type="password" autocomplete="new-password" aria-describedby="pwdHelp" />
+            <div id="pwdHelp" class="muted">Use a mix of length, symbols, numbers, and phrases.</div>
+
+            <div class="meter">
+              <div id="strengthBar" class="bar"><span id="strengthLabel">—</span></div>
+            </div>
+
+            <div class="pw-actions">
+              <button id="runCrack" class="action">Run Simulation</button>
+              <button id="suggestPwd" class="secondary">Suggest Strong Password</button>
+            </div>
+
+            <div id="crackResult" class="result" aria-live="polite"></div>
+          </div>
+        </article>
+
+        <!-- SQL SIM -->
+        <article class="sim" id="sqlSim" role="region" aria-labelledby="sqlTitle" hidden>
+          <h3 id="sqlTitle">SQL Injection — Safe Simulation</h3>
+          <p class="muted">This sim demonstrates how improper input handling can change app behavior. It is a simulated result engine — no SQL is run anywhere.</p>
+
+          <form id="sqlForm" class="sql-form" onsubmit="return false;">
+            <label for="username">Username:</label>
+            <input id="username" type="text" value="admin" />
+            <label for="passwordSql">Password:</label>
+            <input id="passwordSql" type="text" value="password123" />
+            <div class="sql-actions">
+              <button id="submitSql" class="action">Submit (Simulated)</button>
+              <button id="sanitizeSql" class="secondary">Show Safe Query</button>
+            </div>
+          </form>
+
+          <div id="sqlOutput" class="result monospace" aria-live="polite"></div>
+          <div id="sqlAdvice" class="advice"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="quiz" hidden>
+      <h2>Quick Quiz</h2>
+      <div id="quizCard">
+        <p id="quizQ">Which practice best prevents phishing success?</p>
+        <ul class="quiz-options" role="list">
+          <li><button class="quiz-option">A. Clicking links to confirm identity</button></li>
+          <li><button class="quiz-option">B. Verifying sender and hovering links</button></li>
+          <li><button class="quiz-option">C. Replying with your password</button></li>
+        </ul>
+        <div id="quizResult" class="result" aria-live="polite"></div>
+      </div>
+    </section>
+
+    
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>CyberSim — Educational only. &copy; <span id="year"></span></small>
+      <div class="footer-links">
+        <button id="resetProgress" class="link-btn">Reset Progress</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scriptSM.js"></script>
+</body>
+</html>

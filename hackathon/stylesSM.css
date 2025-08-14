@@ -1,0 +1,56 @@
+:root{
+  --bg: #000;
+  --accent: #00ff00;
+  --muted: rgba(0,255,0,0.6);
+  font-family: monospace;
+
+}
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color : var(--accent);
+  font-size: 16px;
+  line-height: 1.4;
+  text-shadow: 0 0 2px var(--accent);
+  image-rendering: pixelated;
+}
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    rgba(0,255,0,0.05),
+    rgba(0,255,0,0.05) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+
+pointer-events: none;
+}
+
+.panel{
+  border:1px solid var(--muted);
+  padding: 10px;
+  background: rgba(0,255,0,0.003);
+}
+
+.start-btn,.top-nav,.nav-btn,.link-btn,.tab,.checkPhishing,.explainPhishing,.runCrack,.suggestPwd,.action,.secondary,.quiz-option{
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family:inherit;
+
+}
+
+button:hover {
+  background: rgba(0,255,0,0.1);
+}
+
+.card{
+  border: 1px solid var(--muted);
+  padding: 10px;
+  background: rgba(0,255,0,0.02);
+}

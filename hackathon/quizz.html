@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Page</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+        <li><a href="cyber (1).html">Home</a></li>
+        <li><a href="lessons.html">Lessons</a></li>
+        <li><a href="quizz.html">Quizzes</a></li>
+        <li><a href="Simulation.html">Simulations</a></li>
+    </ul>
+</nav>
+  <h1>Welcome to the Quiz</h1>
+  <p>Please select the correct answer for each question.</p>
+
+  <button id="start-btn" type="button">Start Quiz</button>
+
+  <form id="quiz-form" style="display: none;">
+    <div class="question" data-question="q1">
+      <p>1. Which of the following best describes SQL injections?</p>
+      <label><input type="radio" name="q1" value="A" class="option"> A) Injecting malicious CSS into a website.</label>
+      <label><input type="radio" name="q1" value="B" class="option"> B) Exploiting a database query by inserting malicious SQL commands.</label>
+      <label><input type="radio" name="q1" value="C" class="option"> C) Sending spam emails.</label>
+      <span class="feedback"></span>
+    </div>
+
+    <div class="question" data-question="q2">
+      <p>2. What does Cross-Site Scripting allow attackers to do?</p>
+      <label><input type="radio" name="q2" value="A" class="option"> A) Inject and execute malicious JavaScript in a user's browser.</label>
+      <label><input type="radio" name="q2" value="B" class="option"> B) Steal passwords from server logs.</label>
+      <label><input type="radio" name="q2" value="C" class="option"> C) Alter DNS records.</label>
+      <span class="feedback"></span>
+    </div>
+
+    <div class="question" data-question="q3">
+      <p>3. Denial of Service attack aims to do what?</p>
+      <label><input type="radio" name="q3" value="A" class="option"> A) Encrypt user data and demand ransom.</label>
+      <label><input type="radio" name="q3" value="B" class="option"> B) Hack into the database directly.</label>
+      <label><input type="radio" name="q3" value="C" class="option"> C) Overwhelm a server with traffic to make it unavailable to users.</label>
+      <span class="feedback"></span>
+    </div>
+
+    <div class="question" data-question="q4">
+      <p>4. Which protocol is more secure for transmitting sensitive information?</p>
+      <label><input type="radio" name="q4" value="A" class="option"> A) HTTPS.</label>
+      <label><input type="radio" name="q4" value="B" class="option"> B) FTP.</label>
+      <label><input type="radio" name="q4" value="C" class="option"> C) HTTP.</label>
+      <label><input type="radio" name="q4" value="D" class="option"> D) Telnet.</label>
+      <span class="feedback"></span>
+    </div>
+
+    <div class="question" data-question="q5">
+      <p>5. Phishing attacks often:</p>
+      <label><input type="radio" name="q5" value="A" class="option"> A) Trick users into revealing personal information through fake websites or emails.</label>
+      <label><input type="radio" name="q5" value="B" class="option"> B) Modify DNS settings.</label>
+      <label><input type="radio" name="q5" value="C" class="option"> C) Require physical access to the victim's device.</label>
+      <label><input type="radio" name="q5" value="D" class="option"> D) Bypass firewalls using malware.</label>
+      <span class="feedback"></span>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+  <div id="result"></div>
+
+  <script src="quiz.js"></script>
+</body>
+</html>

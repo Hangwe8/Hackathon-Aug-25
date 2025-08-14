@@ -1,0 +1,221 @@
+* {
+  color-scheme: dark; /* only dark mode support */
+}
+
+body {
+  margin: 0;
+  font-family: system-ui;
+  font-size: 1.3rem;
+  color: #08e013; /* ✅ moved comment correctly */
+  line-height: 1.5;
+  display: grid;
+  grid-template-columns: 
+    [full-start] minmax(1em, 1fr) 
+    [main-start] minmax(0, 40em) [main-end]
+    minmax(1em, 1fr) [full-end];
+  background: black;
+}
+
+img {
+  max-width: 100%;
+}
+
+section {
+  grid-column: main;
+}
+
+section.fullscreen {
+  grid-column: full;
+  height: 100svh;
+  display: grid;
+  place-content: center;
+  background: black;
+}
+
+blockquote {
+  font-style: italic;
+  font-size: 1.6rem;
+}
+
+cite {
+  display: block;
+  font-size: small;
+  margin-block: 1rem;
+  opacity: .6;
+}
+
+hr {
+  display: block;
+  margin-block: 4rem;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-width: 1px 0 0;
+}
+
+.side-by-side {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+
+.side-by-side__text {
+  grid-column: 2;
+  margin-trim: block;
+}
+
+.side-by-side__text h3 {
+  margin-top: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+p, h2, h3, blockquote, hr {
+  animation: text-appear ease-in both;
+  animation-timeline: view();
+  animation-range: 0vh 70vh;
+}
+
+img {
+  animation: image-appear ease-in both;
+  animation-timeline: view();
+  animation-range: entry 50% 100vh;
+}
+
+@prefers-reduced-motion {
+  p, h2, h3, blockquote, hr, img {
+    animation: none;
+  }
+}
+
+@keyframes image-appear {
+  from {
+    filter: saturate(0) contrast(4) brightness(.1) blur(3px);
+    opacity: 0;
+    scale: .95;
+    translate: 0 4rem;
+  }
+}
+
+@keyframes text-appear {
+  from {
+    opacity: 0;
+    translate: 0 8rem;
+  }
+}
+
+/* ===== NAVIGATION BAR ===== */
+.nav, .menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background-color: #000000;
+  padding: 20px;
+  transition: 0.5s;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 8px 15px rgba(0,0,0,.2);
+  z-index: 1000;
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+  width: 0;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.nav input:checked ~ .menu {
+  width: 550px;
+}
+
+.menu li {
+  list-style: none;
+  margin: 0 10px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #06ff3c;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: 0.5s;
+}
+
+.menu li a:hover {
+  color: #008a8a;
+}
+
+.nav input {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.nav span {
+  position: absolute;
+  left: 30px;
+  width: 30px;
+  height: 4px;
+  border-radius: 50px;
+  background-color: #00a80e;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.nav input:checked ~ span {
+  background-color: #cd2eb0;
+}
+
+.nav span:nth-child(2) {
+  transform: translateY(-8px);
+}
+
+.nav input:checked ~ span:nth-child(2) {
+  transform: translateY(0) rotate(-45deg);
+}
+
+.nav span:nth-child(3) {
+  transform: translateY(8px);
+}
+
+.nav input:checked ~ span:nth-child(3) {
+  transform: translateY(0) rotate(45deg);
+}
+
+.links {
+  color: #06ff3c;
+}
+
+/* ===== NEW IMPROVEMENTS ===== */
+
+/* Make nav menu responsive */
+@media (max-width: 650px) {
+  .nav input:checked ~ .menu {
+    width: 100vw;
+    flex-direction: column;
+  }
+
+  .menu li {
+    margin: 10px 0;
+  }
+}
+
+/* Add smooth scrolling for better navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Improve list spacing in sections */
+ul.links li {
+  margin-bottom: 0.5rem;
+}
